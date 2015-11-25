@@ -49,6 +49,36 @@
     return 0;
 }
 
+-(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    NSString *text = self.searchbar.text;
+    NSString *urlstr = @"https://ajax.googleapis.com/ajax/services/search/images?v=1.0&q=";
+    NSString *urlString = [NSString stringWithFormat:@"%@%@", urlstr, text];
+    NSURL *url = [NSURL URLWithString:urlString];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    [NSURLConnection sendAsynchronousRequest:request
+                                       queue:[NSOperationQueue mainQueue]
+                           completionHandler:^(NSURLResponse *response,
+                                               NSData *data, NSError *connectionError)
+     {
+         if (data.length > 0 && connectionError == nil)
+         {
+             NSDictionary *result = [NSJSONSerialization JSONObjectWithData:data
+                                                                      options:0
+                                                                        error:NULL];
+             
+             //NSLog(@"%@",response);
+             //NSLog(@"Dicitionary: %@", [result description]);
+             //for(NSString *key in [result allKeys]){
+                 NSLog(@"%@", [result objectForKey:@"results"] );
+               //  NSLog(@"-----------------------------");
+             //}
+             
+             //self.tableView.text = [[greeting objectForKey:@"id"] stringValue];
+             //self.greetingContent.text = [greeting objectForKey:@"content"];
+         }
+     }];
+}
+
 /*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
