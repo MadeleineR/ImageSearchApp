@@ -10,12 +10,20 @@
 
 @interface SearchTableViewController ()
 
+@property (strong, nonatomic) UISearchController *searchController;
+@property (nonatomic, strong) NSMutableArray *searchResults;
+
 @end
 
 @implementation SearchTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    
+    self.searchbar.delegate = self;
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;

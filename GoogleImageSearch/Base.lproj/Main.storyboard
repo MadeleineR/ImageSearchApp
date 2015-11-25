@@ -30,13 +30,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <searchBar key="tableFooterView" contentMode="redraw" id="YY0-4c-rk3">
+                        <searchBar key="tableFooterView" contentMode="redraw" id="10D-zz-xBE">
                             <rect key="frame" x="0.0" y="64" width="600" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <textInputTraits key="textInputTraits"/>
-                            <connections>
-                                <outlet property="delegate" destination="Lgi-yA-dC1" id="pHx-gr-tg3"/>
-                            </connections>
                         </searchBar>
                         <connections>
                             <outlet property="dataSource" destination="Lgi-yA-dC1" id="Og6-nY-U5Z"/>
@@ -45,14 +42,15 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="x9E-dY-DQA"/>
                     <connections>
+                        <outlet property="searchController" destination="MLY-XZ-tFr" id="FQ3-bm-jiP"/>
                         <outlet property="searchDisplayController" destination="MLY-XZ-tFr" id="rh5-yY-h7V"/>
+                        <outlet property="searchbar" destination="10D-zz-xBE" id="ZCS-lM-ZMa"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Osc-WK-M1a" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <searchDisplayController id="MLY-XZ-tFr">
                     <connections>
                         <outlet property="delegate" destination="Lgi-yA-dC1" id="wBM-av-Ib6"/>
-                        <outlet property="searchBar" destination="YY0-4c-rk3" id="0gl-GR-UsW"/>
                         <outlet property="searchContentsController" destination="Lgi-yA-dC1" id="Uxk-Ua-acD"/>
                         <outlet property="searchResultsDataSource" destination="Lgi-yA-dC1" id="4aF-pk-NQu"/>
                         <outlet property="searchResultsDelegate" destination="Lgi-yA-dC1" id="RGn-kI-uuH"/>
