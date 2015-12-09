@@ -66,12 +66,9 @@
                                                                       options:0
                                                                         error:NULL];
              
-             //NSLog(@"%@",response);
-             //NSLog(@"Dicitionary: %@", [result description]);
-             //for(NSString *key in [result allKeys]){
-                 NSLog(@"%@", [result objectForKey:@"results"] );
-               //  NSLog(@"-----------------------------");
-             //}
+             NSArray *results = [result valueForKey:@"responseData"];
+             NSLog(@"Count %d", results.count);
+           
              
              //self.tableView.text = [[greeting objectForKey:@"id"] stringValue];
              //self.greetingContent.text = [greeting objectForKey:@"content"];
