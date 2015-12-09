@@ -10,6 +10,9 @@
 
 @interface ViewController : UIViewController
 
+@property NSString *url;
+
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
 
 @end
 

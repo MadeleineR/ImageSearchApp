@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "GBLoading.h"
 
 @interface ViewController ()
 
@@ -16,6 +17,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    NSLog(@"%@", _url);
+    
+    [[GBLoading sharedLoading] loadResource:@"http://..." withBackgroundProcessor:^id(NSData *rawData) {
+        return [UIImage imageWithData:rawData];
+    } success:^(id object) {
+        UIImage *loadedImage = (UIImage *)object;
+        self.imageView.image = loadedImage;
+        //do something with loaded image
+    } failure:^(BOOL isCancelled) {
+        NSLog(@"failed to load");
+    }];
     // Do any additional setup after loading the view, typically from a nib.
 }
 

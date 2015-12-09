@@ -8,6 +8,7 @@
 
 #import "SearchTableViewController.h"
 #import "Image.h"
+#import "ViewController.h"
 
 @interface SearchTableViewController ()
 
@@ -96,6 +97,17 @@
     cell.textLabel.text = image.title;
     
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    Image *image = [_searchResults objectAtIndex:indexPath.row];
+    NSString *url = image.url;
+    
+    ViewController *viewController = [[ViewController alloc] init];
+    viewController.url = url;
+    [self.navigationController pushViewController:viewController animated:YES];
+    
 }
 
 
