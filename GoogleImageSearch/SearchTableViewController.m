@@ -7,10 +7,10 @@
 //
 
 #import "SearchTableViewController.h"
+#import "Image.h"
 
 @interface SearchTableViewController ()
 
-@property (strong, nonatomic) UISearchController *searchController;
 @property (nonatomic, strong) NSMutableArray *searchResults;
 
 @end
@@ -24,6 +24,8 @@
     self.tableView.dataSource = self;
     
     self.searchbar.delegate = self;
+    
+    _searchResults = [[NSMutableArray alloc] init];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -40,19 +42,18 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Incomplete implementation, return the number of sections
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of rows
-    return 0;
+    return [_searchResults count];
 }
 
 -(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
     NSString *text = self.searchbar.text;
-    NSString *urlstr = @"https://ajax.googleapis.com/ajax/services/search/images?v=1.0&q=";
-    NSString *urlString = [NSString stringWithFormat:@"%@%@", urlstr, text];
+    NSString *urlstr = @"https://www.googleapis.com/customsearch/v1?q=";
+    NSString *param = @"&key=AIzaSyBxTYFGG0233cuwdBLUCrJpp5qRLgqnLXY&cx=010728758770134369862:mgz6wf9zatc&searchType=image";
+    NSString *urlString = [NSString stringWithFormat:@"%@%@%@", urlstr, text, param];
     NSURL *url = [NSURL URLWithString:urlString];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     [NSURLConnection sendAsynchronousRequest:request
@@ -66,25 +67,37 @@
                                                                       options:0
                                                                         error:NULL];
              
-             NSArray *results = [result valueForKey:@"responseData"];
-             NSLog(@"Count %d", results.count);
-           
+             NSArray *items = [result objectForKey:@"items"];
              
-             //self.tableView.text = [[greeting objectForKey:@"id"] stringValue];
-             //self.greetingContent.text = [greeting objectForKey:@"content"];
+             [_searchResults removeAllObjects];
+             for(id object in items) {
+                 NSString *title = [object objectForKey:@"title"];
+                 NSString *url = [object objectForKey:@"link"];
+                 
+                 Image *image = [[Image alloc] initWithTitle:title url:url];
+                 [_searchResults addObject:image];
+             }
+             [self.tableView reloadData];
          }
      }];
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    static NSString *simpleTableIdentifier = @"SimpleTableItem";
     
-    // Configure the cell...
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
+    
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
+    }
+    
+    Image *image = [_searchResults objectAtIndex:indexPath.row];
+    cell.textLabel.text = image.title;
     
     return cell;
 }
-*/
+
 
 /*
 // Override to support conditional editing of the table view.
