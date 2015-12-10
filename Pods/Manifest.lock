@@ -1,0 +1,13 @@
+PODS:
+  - GBLoading (2.4.0):
+    - GBStorage (~> 2.1)
+  - GBStorage (2.2.1)
+
+DEPENDENCIES:
+  - GBLoading
+
+SPEC CHECKSUMS:
+  GBLoading: 24e6e515defafd93b100ad53e753b9b33c381957
+  GBStorage: 50aeef839abb133b89ff9e63025978d767ad6fd5
+
+COCOAPODS: 0.39.0

@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="dUi-8R-MiB">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -17,26 +16,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="zT5-nj-vRP">
-                                <rect key="frame" x="290" y="20" width="20" height="20"/>
-                            </activityIndicatorView>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="6HC-pc-AoC">
-                                <rect key="frame" x="290" y="72" width="20" height="20"/>
-                            </activityIndicatorView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Yva-Xu-AaB">
-                                <rect key="frame" x="0.0" y="118" width="600" height="482"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Yva-Xu-AaB">
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                             </imageView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="6HC-pc-AoC">
+                                <rect key="frame" x="290" y="188" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="6HC-pc-AoC" secondAttribute="trailing" constant="270" id="4oZ-F4-8OO"/>
-                            <constraint firstItem="Yva-Xu-AaB" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="7U9-Gl-8Jz"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Yva-Xu-AaB" secondAttribute="trailing" constant="-20" id="F7j-1t-rHL"/>
-                            <constraint firstItem="6HC-pc-AoC" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="270" id="LfQ-6Q-oXh"/>
-                            <constraint firstItem="6HC-pc-AoC" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="VpV-jf-Inc"/>
-                            <constraint firstItem="Yva-Xu-AaB" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="54" id="gb9-y1-NBy"/>
-                            <constraint firstItem="6HC-pc-AoC" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="jQO-1Q-7ab"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Yva-Xu-AaB" secondAttribute="bottom" id="wUj-ba-StU"/>
+                            <constraint firstItem="6HC-pc-AoC" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="124" id="Bbl-Y8-OeG"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Yva-Xu-AaB" secondAttribute="bottom" id="DPi-sF-a1v"/>
+                            <constraint firstItem="6HC-pc-AoC" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="bfb-tc-SVL"/>
+                            <constraint firstItem="Yva-Xu-AaB" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="cwp-a4-8kN"/>
+                            <constraint firstAttribute="trailing" secondItem="Yva-Xu-AaB" secondAttribute="trailing" id="uR5-fv-ReP"/>
+                            <constraint firstItem="Yva-Xu-AaB" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="uww-GP-rxa"/>
                         </constraints>
                     </view>
                     <connections>
@@ -56,11 +50,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <searchBar key="tableFooterView" contentMode="redraw" id="wkW-4v-9B8">
+                        <searchBar key="tableHeaderView" contentMode="redraw" id="wkW-4v-9B8">
                             <rect key="frame" x="0.0" y="64" width="600" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <textInputTraits key="textInputTraits"/>
                         </searchBar>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="paw-cW-9gf">
+                                <rect key="frame" x="0.0" y="136" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="paw-cW-9gf" id="QeX-Zd-uGz">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="Lgi-yA-dC1" id="Og6-nY-U5Z"/>
                             <outlet property="delegate" destination="Lgi-yA-dC1" id="RWQ-Nl-PK8"/>
