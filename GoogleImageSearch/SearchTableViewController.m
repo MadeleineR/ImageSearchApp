@@ -13,6 +13,7 @@
 @interface SearchTableViewController ()
 
 @property (nonatomic, strong) NSMutableArray *searchResults;
+@property (nonatomic, strong) Image *image;
 
 @end
 
@@ -101,13 +102,25 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    Image *image = [_searchResults objectAtIndex:indexPath.row];
+    /*Image *image = [_searchResults objectAtIndex:indexPath.row];
     NSString *url = image.url;
     
     ViewController *viewController = [[ViewController alloc] init];
     viewController.url = url;
-    [self.navigationController pushViewController:viewController animated:YES];
+    [self.navigationController pushViewController:viewController animated:YES];*/
+    _image = [_searchResults objectAtIndex:indexPath.row];
+    [self performSegueWithIdentifier:@"ImageDetailView" sender:self];
     
+}
+
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if([[segue identifier] isEqualToString:@"ImageDetailView"]){
+        ViewController *controller = [segue destinationViewController];
+        NSString *url = _image.url;
+        controller.url = url;
+        
+    }
 }
 
 
