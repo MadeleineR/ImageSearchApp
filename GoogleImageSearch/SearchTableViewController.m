@@ -22,6 +22,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.title = @"Image Search";
+    
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
